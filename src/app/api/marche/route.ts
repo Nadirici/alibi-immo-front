@@ -4,12 +4,19 @@ import type { Transaction, MarketStats } from "@/types";
 const API_URL = process.env.IMMO_API_URL!;
 const API_KEY = process.env.IMMO_API_KEY!;
 
+const MAX_PAGES = 15; // plafond : ~1500 transactions max
+
 async function fetchAllTransactions(commune_name: string): Promise<Transaction[]> {
   const all: Transaction[] = [];
   let cursor: number | null = null;
+  let pages = 0;
 
   do {
-    const paramsObj: Record<string, string> = { commune_name, page_size: "500" };
+    const paramsObj: Record<string, string> = {
+      commune_name,
+      page_size: "100",
+      date_from: "2022-01-01", // seulement 2022-2024, évite les dizaines de pages historiques
+    };
     if (cursor) paramsObj.cursor = String(cursor);
     const params = new URLSearchParams(paramsObj);
     const res: Response = await fetch(`${API_URL}/transactions?${params}`, {
@@ -19,7 +26,8 @@ async function fetchAllTransactions(commune_name: string): Promise<Transaction[]
     const page: { results: Transaction[]; next_cursor: number | null } = await res.json();
     all.push(...page.results);
     cursor = page.next_cursor ?? null;
-  } while (cursor);
+    pages++;
+  } while (cursor && pages < MAX_PAGES);
 
   return all;
 }
