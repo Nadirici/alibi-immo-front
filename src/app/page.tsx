@@ -1,30 +1,12 @@
+export const dynamic = "force-dynamic";
+
 import Hero from "@/components/Hero";
 import StatCard from "@/components/StatCard";
 import ListingRow from "@/components/ListingRow";
 import listings from "@/data/listings.json";
 import type { Listing } from "@/types";
 
-async function getMarketStats() {
-  try {
-    const [r78, r92] = await Promise.all([
-      fetch(`${process.env.IMMO_API_URL}/transactions?department_code=78&page_size=1`, {
-        headers: { "X-API-Key": process.env.IMMO_API_KEY! },
-        next: { revalidate: 3600 },
-      }),
-      fetch(`${process.env.IMMO_API_URL}/transactions?department_code=92&page_size=1`, {
-        headers: { "X-API-Key": process.env.IMMO_API_KEY! },
-        next: { revalidate: 3600 },
-      }),
-    ]);
-    return { ok: r78.ok && r92.ok };
-  } catch {
-    return { ok: false };
-  }
-}
-
-export default async function HomePage() {
-  await getMarketStats(); // warm up
-
+export default function HomePage() {
   const featuredListings = (listings as Listing[]).slice(0, 3);
 
   return (

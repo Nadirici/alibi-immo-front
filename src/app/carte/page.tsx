@@ -1,4 +1,7 @@
+"use client";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import type { Transaction } from "@/types";
 
 // Dynamic import pour éviter l'erreur SSR de Leaflet
 const MapView = dynamic(() => import("@/components/MapView"), {
@@ -10,29 +13,23 @@ const MapView = dynamic(() => import("@/components/MapView"), {
   ),
 });
 
-async function getTransactions() {
-  try {
-    const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-    const res = await fetch(
-      `${base}/api/transactions?department_code=78&page_size=200&map=true`,
-      { next: { revalidate: 300 } }
-    );
-    if (!res.ok) return [];
-    const data = await res.json();
-    return data.results ?? [];
-  } catch {
-    return [];
-  }
-}
+export default function CartePage() {
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function CartePage() {
-  const transactions = await getTransactions();
+  useEffect(() => {
+    fetch("/api/transactions?department_code=78&page_size=200&map=true")
+      .then((r) => r.json())
+      .then((data) => setTransactions(data.results ?? []))
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <h1 className="font-serif text-3xl font-bold text-gray-800 mb-2">Carte des transactions</h1>
       <p className="text-gray-500 mb-6">
-        {transactions.length} transactions affichées · Yvelines & Hauts-de-Seine
+        {loading ? "Chargement..." : `${transactions.length} transactions affichées · Yvelines`}
       </p>
       <div className="h-[600px] rounded-xl overflow-hidden shadow border border-gray-100">
         <MapView transactions={transactions} />
