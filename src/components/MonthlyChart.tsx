@@ -30,7 +30,7 @@ export default function MonthlyChart({ data }: { data: DataPoint[] }) {
           tickFormatter={(v: number) => `${(v / 1000).toFixed(0)}k`}
         />
         <Tooltip
-          formatter={(value: number) => [`${value.toLocaleString("fr-FR")} €/m²`, "Prix médian"]}
+          formatter={(value) => [`${(value as number).toLocaleString("fr-FR")} €/m²`, "Prix médian"]}
           labelStyle={{ color: "#374151", fontWeight: 600 }}
           contentStyle={{ borderRadius: 8, border: "1px solid #E5E7EB" }}
         />

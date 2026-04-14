@@ -9,16 +9,14 @@ async function fetchAllTransactions(commune_name: string): Promise<Transaction[]
   let cursor: number | null = null;
 
   do {
-    const params = new URLSearchParams({
-      commune_name,
-      page_size: "500",
-      ...(cursor ? { cursor: String(cursor) } : {}),
-    });
-    const res = await fetch(`${API_URL}/transactions?${params}`, {
+    const paramsObj: Record<string, string> = { commune_name, page_size: "500" };
+    if (cursor) paramsObj.cursor = String(cursor);
+    const params = new URLSearchParams(paramsObj);
+    const res: Response = await fetch(`${API_URL}/transactions?${params}`, {
       headers: { "X-API-Key": API_KEY },
     });
     if (!res.ok) break;
-    const page = await res.json();
+    const page: { results: Transaction[]; next_cursor: number | null } = await res.json();
     all.push(...page.results);
     cursor = page.next_cursor ?? null;
   } while (cursor);
