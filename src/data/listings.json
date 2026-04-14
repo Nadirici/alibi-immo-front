@@ -1,0 +1,98 @@
+[
+  {
+    "id": "l1",
+    "titre": "Bel appartement lumineux",
+    "type": "Appartement",
+    "adresse": "12 rue des Lilas",
+    "commune": "Versailles",
+    "surface": 68,
+    "pieces": 3,
+    "prix": 380000,
+    "photo": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600",
+    "description": "Appartement traversant au 3ème étage avec parquet ancien, double exposition."
+  },
+  {
+    "id": "l2",
+    "titre": "Maison avec jardin",
+    "type": "Maison",
+    "adresse": "8 allée des Chênes",
+    "commune": "Saint-Germain-en-Laye",
+    "surface": 140,
+    "pieces": 5,
+    "prix": 780000,
+    "photo": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600",
+    "description": "Maison familiale avec jardin de 300m², garage, cave."
+  },
+  {
+    "id": "l3",
+    "titre": "Studio idéal investisseur",
+    "type": "Appartement",
+    "adresse": "3 avenue de la Gare",
+    "commune": "Mantes-la-Jolie",
+    "surface": 24,
+    "pieces": 1,
+    "prix": 89000,
+    "photo": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600",
+    "description": "Studio refait à neuf, proche RER E, bon rendement locatif."
+  },
+  {
+    "id": "l4",
+    "titre": "Appartement Haussmannien",
+    "type": "Appartement",
+    "adresse": "27 boulevard Victor Hugo",
+    "commune": "Neuilly-sur-Seine",
+    "surface": 95,
+    "pieces": 4,
+    "prix": 920000,
+    "photo": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600",
+    "description": "Superbe appartement avec moulures, cheminée, cave et parking."
+  },
+  {
+    "id": "l5",
+    "titre": "Pavillon années 70",
+    "type": "Maison",
+    "adresse": "15 rue des Pins",
+    "commune": "Poissy",
+    "surface": 110,
+    "pieces": 5,
+    "prix": 420000,
+    "photo": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600",
+    "description": "Pavillon plain-pied avec garage double, jardin clos 600m²."
+  },
+  {
+    "id": "l6",
+    "titre": "T2 avec terrasse",
+    "type": "Appartement",
+    "adresse": "9 rue du Marché",
+    "commune": "Boulogne-Billancourt",
+    "surface": 48,
+    "pieces": 2,
+    "prix": 395000,
+    "photo": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600",
+    "description": "T2 en dernier étage, terrasse de 12m², vue dégagée, digicode."
+  },
+  {
+    "id": "l7",
+    "titre": "Grande maison familiale",
+    "type": "Maison",
+    "adresse": "4 impasse des Roses",
+    "commune": "Le Chesnay",
+    "surface": 185,
+    "pieces": 7,
+    "prix": 990000,
+    "photo": "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=600",
+    "description": "Rare — maison d'architecte sur 800m² de terrain arboré, piscine."
+  },
+  {
+    "id": "l8",
+    "titre": "Appartement vue parc",
+    "type": "Appartement",
+    "adresse": "1 avenue du Parc",
+    "commune": "Sèvres",
+    "surface": 72,
+    "pieces": 3,
+    "prix": 560000,
+    "photo": "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600",
+    "description": "T3 face au parc de Saint-Cloud, calme absolu, cuisine équipée."
+  }
+]
